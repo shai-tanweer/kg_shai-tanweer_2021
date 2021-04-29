@@ -1,7 +1,20 @@
+/**
+ * Returns an array of digit converted into string format
+ *
+ * @param {number} number The number to convert.
+ * @return {string []} array of digits.
+ */
 var getDigits = function (number) {
     return number.toString().split("");
   };
-  var getPhoneticForDigit = function (digit) {
+
+/**
+ * Returns the phonetic character of a digit
+ *
+ * @param {string} digit The string digit to convert.
+ * @return {string} phonetic character of a digit
+ */
+var getPhoneticForDigit = function (digit) {
     switch (digit) {
       case "0":
         return "Zero";
@@ -36,11 +49,10 @@ var getDigits = function (number) {
       default:
         return "";
     }
-  };
+};
 
 var result = [];
-var arr = [21,321,4,100];
-arr.forEach(function (number) {
+process.argv.slice(2).forEach(function (number) {
    // get digits of the number
    var digits = getDigits(number);
    // get the phonetic of the digit
@@ -49,6 +61,7 @@ arr.forEach(function (number) {
      var phonetic = getPhoneticForDigit(digit);
      phonetics += phonetic;
    });
+   // add phonetic characters of numbers in result
    result.push(phonetics);
 });
-console.log(result);
+console.log(result.join(','));
